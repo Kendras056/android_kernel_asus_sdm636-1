@@ -2850,6 +2850,7 @@ int wcd_mbhc_init(struct wcd_mbhc *mbhc, struct snd_soc_codec *codec,
 #ifdef CONFIG_MACH_ASUS_X00T
 	int ret_hp =0;
 #endif
+	impedance_det_en = true;
 	int hph_swh = 0;
 	int gnd_swh = 0;
 	u32 hph_moist_config[3];
