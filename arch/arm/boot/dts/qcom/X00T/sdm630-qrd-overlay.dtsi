@@ -7,7 +7,12 @@
 };
 
 &pm660_fg {
-	qcom,fg-jeita-thresholds = <0 1 59 60>;
+	qcom,fg-jeita-thresholds = <0 15 45 60>;
+	qcom,linearize-soc;
+	qcom,hold-soc-while-full;
+	qcom,tcss-enable;
+	qcom,bass-enable;
+	qcom,cl-disable = <1>;
 };
 
 &sdhc_1 {
