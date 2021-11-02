@@ -89,8 +89,8 @@ static struct step_chg_cfg step_chg_config = {
 	.fcc_cfg	= {
 		/* VBAT_LOW	VBAT_HIGH	FCC */
 		{3600000,	4000000,	3000000},
-		{4001000,	4200000,	2800000},
-		{4201000,	4400000,	2000000},
+		{4001000,	4200000,	3000000},
+		{4201000,	4400000,	3000000},
 	},
 	/*
 	 *	SOC STEP-CHG configuration example.
@@ -100,8 +100,8 @@ static struct step_chg_cfg step_chg_config = {
 	 *	.fcc_cfg	= {
 	 *		//SOC_LOW	SOC_HIGH	FCC
 	 *		{20,		70,		3000000},
-	 *		{70,		90,		2750000},
-	 *		{90,		100,		2500000},
+	 *		{70,		90,		3000000},
+	 *		{90,		100,	3000000},
 	 *	},
 	 */
 };
@@ -121,10 +121,10 @@ static struct jeita_fcc_cfg jeita_fcc_config = {
 	.hysteresis	= 10, /* 1degC hysteresis */
 	.fcc_cfg	= {
 		/* TEMP_LOW	TEMP_HIGH	FCC */
-		{0,		100,		3000000},
-		{101,		200,		3000000},
-		{201,		450,		3000000},
-		{451,		550,		3000000},
+		{0,		    100,		4000000},
+		{101,		200,		4000000},
+		{201,		450,		4000000},
+		{451,		550,		4000000},
 	},
 };
 
@@ -134,9 +134,9 @@ static struct jeita_fv_cfg jeita_fv_config = {
 	.hysteresis	= 10, /* 1degC hysteresis */
 	.fv_cfg		= {
 		/* TEMP_LOW	TEMP_HIGH	FCC */
-		{0,		100,		4200000},
-		{101,		450,		4400000},
-		{451,		550,		4200000},
+		{0,		    100,		5200000},
+		{101,		450,		5400000},
+		{451,		550,		5200000},
 	},
 };
 

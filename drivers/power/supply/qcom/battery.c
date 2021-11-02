@@ -105,7 +105,7 @@ enum {
 	RESTRICT_CHG_CURRENT,
 };
 
-#define ONLY_PM660_CURRENT_UA 2000000
+#define ONLY_PM660_CURRENT_UA 2600000
 
 /*******
  * ICL *
@@ -863,7 +863,7 @@ static int usb_icl_vote_callback(struct votable *votable, void *data,
 	vote(chip->pl_disable_votable, ICL_CHANGE_VOTER, true, 0);
 
 	/*
-	 * if (ICL < 1400)
+	 * if (ICL < 3000)
 	 *	disable parallel charger using USBIN_I_VOTER
 	 * else
 	 *	instead of re-enabling here rely on status_changed_work
@@ -871,7 +871,7 @@ static int usb_icl_vote_callback(struct votable *votable, void *data,
 	 *	unvote USBIN_I_VOTER) the status_changed_work enables
 	 *	USBIN_I_VOTER based on settled current.
 	 */
-	if (icl_ua <= 1400000)
+	if (icl_ua <= 3000000)
 		vote(chip->pl_enable_votable_indirect, USBIN_I_VOTER, false, 0);
 	else
 		schedule_delayed_work(&chip->status_change_work,
@@ -1200,10 +1200,10 @@ static void handle_settled_icl_change(struct pl_data *chip)
 	}
 	main_limited = pval.intval;
 
-	if ((main_limited && (main_settled_ua + chip->pl_settled_ua) < 1400000)
+	if ((main_limited && (main_settled_ua + chip->pl_settled_ua) < 3000000)
 			|| (main_settled_ua == 0)
 			|| ((total_current_ua >= 0) &&
-				(total_current_ua <= 1400000)))
+				(total_current_ua <= 3000000)))
 		vote(chip->pl_enable_votable_indirect, USBIN_I_VOTER, false, 0);
 	else
 		vote(chip->pl_enable_votable_indirect, USBIN_I_VOTER, true, 0);
@@ -1329,7 +1329,7 @@ static int pl_determine_initial_status(struct pl_data *chip)
 	return 0;
 }
 
-#define DEFAULT_RESTRICTED_CURRENT_UA	1000000
+#define DEFAULT_RESTRICTED_CURRENT_UA	2000000
 int qcom_batt_init(void)
 {
 	struct pl_data *chip;
