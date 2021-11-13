@@ -51,14 +51,7 @@
 		__func__, ##__VA_ARGS__)	\
 
 #define smblib_dbg(chg, reason, fmt, ...)			\
-	do {							\
-		if (*chg->debug_mask & (reason))		\
-			pr_info("%s: %s: " fmt, chg->name,	\
-				__func__, ##__VA_ARGS__);	\
-		else						\
-			pr_debug("%s: %s: " fmt, chg->name,	\
-				__func__, ##__VA_ARGS__);	\
-	} while (0)
+	do { } while (0)
 #else
 #define smblib_err(chg, fmt, ...) do {} while (0)
 #define smblib_dbg(chg, reason, fmt, ...) do {} while (0)
@@ -3915,7 +3908,8 @@ void asus_chg_flow_work(struct work_struct *work)
 			pr_err("%s: Couldn't read fast_CURRENT_LIMIT_CFG_REG\n",
 				__func__);
 
-		set_icl = ICL_1500mA;
+		// Write ICL for DCP
+		set_icl = ICL_3000mA;
 
 		rc = smblib_masked_write(smbchg_dev,
 						USBIN_CURRENT_LIMIT_CFG_REG,
@@ -3956,7 +3950,7 @@ void asus_chg_flow_work(struct work_struct *work)
 
 	case OCP_CHARGER_BIT:
 		/* reg=1370 bit7-bit0 */
-		set_icl = ICL_1500mA;
+		set_icl = ICL_2000mA;
 
 		rc = smblib_masked_write(smbchg_dev,
 						USBIN_CURRENT_LIMIT_CFG_REG,
@@ -3976,7 +3970,7 @@ void asus_chg_flow_work(struct work_struct *work)
 	case DCP_CHARGER_BIT | QC_2P0_BIT:
 	case DCP_CHARGER_BIT:
 		/* reg=1370 bit7-bit0 */
-		set_icl = ICL_1500mA;
+		set_icl = ICL_2000mA;
 
 		rc = smblib_masked_write(smbchg_dev,
 						USBIN_CURRENT_LIMIT_CFG_REG,
@@ -4127,6 +4121,7 @@ void asus_adapter_adc_work(struct work_struct *work)
 	 			}
 		}
 
+    	// Set for all chargers
     	usb_max_current = ICL_3000mA;
 
 	rc = smblib_set_usb_suspend(smbchg_dev, 0);
@@ -5527,7 +5522,7 @@ irqreturn_t smblib_handle_switcher_power_ok(int irq, void *data)
 						WEAK_CHARGER_VOTER)) {
 			smblib_err(chg,
 				"Weak charger detected: voting %dmA ICL\n",
-				*chg->weak_chg_icl_ua / 1000);
+				*chg->weak_chg_icl_ua / 1500);
 			vote(chg->usb_icl_votable, WEAK_CHARGER_VOTER,
 					true, *chg->weak_chg_icl_ua);
 			/*
