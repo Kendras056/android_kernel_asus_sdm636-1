@@ -50,7 +50,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x0>;
-			clock-frequency = <1747200000>;
+			clock-frequency = <1612800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
@@ -83,7 +83,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x1>;
-			clock-frequency = <1747200000>;
+			clock-frequency = <1612800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
@@ -110,7 +110,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x2>;
-			clock-frequency = <1747200000>;
+			clock-frequency = <1612800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
@@ -137,7 +137,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x3>;
-			clock-frequency = <1747200000>;
+			clock-frequency = <1612800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile0>;
 			qcom,lmh-dcvs = <&lmh_dcvs0>;
@@ -164,7 +164,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x100>;
-			clock-frequency = <2208000000>;
+			clock-frequency = <1804800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile1>;
 			qcom,lmh-dcvs = <&lmh_dcvs1>;
@@ -195,7 +195,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x101>;
-			clock-frequency = <2208000000>;
+			clock-frequency = <1804800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile2>;
 			qcom,lmh-dcvs = <&lmh_dcvs1>;
@@ -222,7 +222,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x102>;
-			clock-frequency = <2208000000>;
+			clock-frequency = <1804800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile3>;
 			qcom,lmh-dcvs = <&lmh_dcvs1>;
@@ -249,7 +249,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x103>;
-			clock-frequency = <2208000000>;
+			clock-frequency = <1804800000>;
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile4>;
 			qcom,lmh-dcvs = <&lmh_dcvs1>;
@@ -322,7 +322,7 @@
 				1113600 14
 				1401600 23
 				1536000 32
-				1747200 40
+				1612800 40
 			>;
 			idle-cost-data = <
 				20 16 12 8
@@ -336,7 +336,7 @@
 				1113600 268
 				1401600 307
 				1536000 485
-				1747200 683
+				1612800 683
 			>;
 			idle-cost-data = <
 				100 80 60 40
@@ -350,9 +350,7 @@
 				1113600 13
 				1401600 23
 				1747200 32
-				1958400	37
-				2150400	44
-				2208000	45
+				1804800 39
 			>;
 			idle-cost-data = <
 				4 3 2 1
@@ -366,9 +364,7 @@
 				1113600 15
 				1401600 25
 				1747200 31
-				1958400	37
-				2150400	44
-				2208000	45
+				1804800 39
 			>;
 			idle-cost-data = <
 				4 3 2 1
@@ -1277,7 +1273,7 @@
 
 	memlat_cpu0: qcom,memlat-cpu0 {
 		compatible = "qcom,devbw";
-		governor = "cpufreq";
+		governor = "powersave";
 		qcom,src-dst-ports = <1 512>;
 		qcom,active-only;
 		qcom,bw-tbl =
@@ -1298,7 +1294,7 @@
 
 	memlat_cpu4: qcom,memlat-cpu4 {
 		compatible = "qcom,devbw";
-		governor = "cpufreq";
+		governor = "powersave";
 		qcom,src-dst-ports = <1 512>;
 		qcom,active-only;
 		qcom,bw-tbl =
@@ -1328,7 +1324,7 @@
 			< 1113600 1144 >,
 			< 1401600 1571 >,
 			< 1536000 2086 >,
-			< 1747200 2597 >;
+			< 1612800 2597 >;
 	};
 
 	devfreq_memlat_4: qcom,arm-memlat-mon-4 {
@@ -1342,9 +1338,7 @@
 			< 1113600 762 >,
 			< 1401600 2086 >,
 			< 1747200 2929 >,
-			< 1958400 4943 >,
-			< 2150400 5931 >,
-			< 2208000 6881 >;
+			< 1804800 3879 >;
 	};
 
 	devfreq_cpufreq: devfreq-cpufreq {
@@ -1357,7 +1351,7 @@
 				< 1113600 1144 >,
 				< 1401600 1571 >,
 				< 1536000 2086 >,
-				< 1747200 2597 >;
+				< 1612800 2597 >;
 			cpu-to-dev-map-4 =
 				< 300000 381 >,
 				< 633600 572 >,
@@ -1365,9 +1359,7 @@
 				< 1113600 762 >,
 				< 1401600 2086 >,
 				< 1747200 2929 >,
-				< 1958400 3879 >,
-				< 2150400 4943 >,
-				< 2208000 6881 >;
+				< 1804800 3879 >;
 		};
 	};
 
@@ -1414,7 +1406,7 @@
 			<  1113600000 0x0404003a 0x052e002e 0x2 4 >,
 			<  1401600000 0x04040049 0x073a003a 0x2 5 >,
 			<  1536000000 0x04040050 0x08400040 0x2 6 >,
-			<  1747200000 0x0404005b 0x09480048 0x2 7 >;
+			<  1612800000 0x04040054 0x09430043 0x2 7 >;
 
 		qcom,pwrcl-speedbin4-v0 =
 			<   300000000 0x0004000f 0x01200020 0x1 1 >,
@@ -1455,9 +1447,7 @@
 			<  1113600000 0x0404003a 0x052e002e 0x1 4 >,
 			<  1401600000 0x04040049 0x073a003a 0x2 5 >,
 			<  1747200000 0x0404005b 0x09480048 0x2 6 >,
-			<  1958400000 0x04040066 0x0a510051 0x2 7 >,
-			<  2150400000 0x04040070 0x0b590059 0x2 8 >,
-			<  2208000000 0x04040073 0x0b5c005c 0x3 9 >;
+			<  1804800000 0x0404005e 0x094b004b 0x2 7 >;
 
 		qcom,perfcl-speedbin4-v0 =
 			<   300000000 0x0004000f 0x01200020 0x1 1 >,
@@ -1521,7 +1511,7 @@
 			< 1113600 >,
 			< 1401600 >,
 			< 1536000 >,
-			< 1747200 >;
+			< 1612800 >;
 
 		qcom,cpufreq-table-4 =
 			<  300000 >,
@@ -1530,9 +1520,7 @@
 			< 1113600 >,
 			< 1401600 >,
 			< 1747200 >,
-			< 1958400 >,
-			< 2150400 >,
-			< 2208000 >;
+			< 1804800 >;
 	};
 
 	sdhc_1: sdhci@c0c4000 {
