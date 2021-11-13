@@ -130,7 +130,7 @@ on property:persist.spectrum.profile=1
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy4/cpuinfo_max_freq
     write /sys/devices/system/cpu/cpufreq/policy4/cpuinfo_max_freq 2250000
 
-    # Power Efficient Eorkqueues
+    # Power Efficient Workqueues
     write /sys/module/workqueue/parameters/power_efficient "N"
 
     ## GPU
@@ -228,7 +228,7 @@ on property:persist.spectrum.profile=3
     write /proc/sys/kernel/sched_enable_thread_grouping 1
     ## Little gov
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "interactivex"
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "performance"
     ## Little min freq
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 633600
@@ -244,7 +244,7 @@ on property:persist.spectrum.profile=3
 
     ## Big gov
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
-    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor "interactivex"
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor "performance"
     ## Big min freq
     chmod 0644 /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
     write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 1113600
