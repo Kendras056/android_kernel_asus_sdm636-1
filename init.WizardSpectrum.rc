@@ -11,7 +11,7 @@ on property:sys.boot_completed=1
     # Enable Spectrum support
     setprop spectrum.support 1
     # Add kernel name
-    setprop persist.spectrum.kernel Wizard-Electro
+    setprop persist.spectrum.kernel ElectroWizard
     # Enable Force Fast Charge Feature by default
     write /sys/kernel/fast_charge/force_fast_charge 1
     # set to balance
@@ -212,7 +212,7 @@ on property:persist.spectrum.profile=2
     write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/min_freq 19200000
 
     ## I/O Scheduler
-    write /sys/block/mmcblk0/queue/scheduler "noop"
+    write /sys/block/mmcblk0/queue/scheduler "cfq"
 
     ## Thermal
     chmod 0644 /sys/module/msm_thermal/core_control/enabled
@@ -221,7 +221,7 @@ on property:persist.spectrum.profile=2
     chmod 0644 /sys/module/msm_thermal/parameters/enabled
     chown system system /sys/module/msm_thermal/parameters/enabled
     write /sys/module/msm_thermal/parameters/enabled "Y"
-    
+
 # Gaming
 on property:persist.spectrum.profile=3
 
