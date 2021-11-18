@@ -3372,21 +3372,14 @@ static int fg_get_time_to_full_locked(struct fg_chip *chip, int *val)
 	ibatt_avg = -ibatt_avg / MILLI_UNIT;
 	vbatt_avg /= MILLI_UNIT;
 
-#if defined(CONFIG_KERNEL_CUSTOM_E7S) || defined(CONFIG_KERNEL_CUSTOM_E7T)
-	if (ibatt_avg > 2100)
-		ibatt_avg = 2100; /* force max charging current limitations */
-#else
+#ifdef CONFIG_MACH_ASUS_X00T
 	if (ibatt_avg > 2500)
 		ibatt_avg = 2500; /* force max charging current limitations */
 #endif
+
 	/* clamp ibatt_avg to iterm */
-	if ((msoc > 70) && (msoc <= 90)) {
-		if (ibatt_avg < 1800)
-			ibatt_avg = 1800; /* force consistent minimum charging current 1800mA upto 90% battery */
-	} else {
 		if (ibatt_avg < abs(chip->dt.sys_term_curr_ma))
 			ibatt_avg = abs(chip->dt.sys_term_curr_ma);
-	}
 
 	fg_dbg(chip, FG_TTF, "ibatt_avg=%d\n", ibatt_avg);
 	fg_dbg(chip, FG_TTF, "vbatt_avg=%d\n", vbatt_avg);
