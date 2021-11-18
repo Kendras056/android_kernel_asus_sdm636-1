@@ -100,7 +100,11 @@ enum {
 	RESTRICT_CHG_CURRENT,
 };
 
-#define ONLY_PM660_CURRENT_UA 2000000
+#ifdef CONFIG_MACH_ASUS_X00T
+#define ONLY_PM660_CURRENT_UA 2300000
+#else
+#define ONLY_PM660_CURRENT_UA 2700000
+#endif
 
 /*******
  * ICL *
@@ -888,7 +892,7 @@ static int usb_icl_vote_callback(struct votable *votable, void *data,
 
 	if (rerun_aicl) {
 		/* set a lower ICL */
-		pval.intval = 3000000 - ICL_STEP_UA, ICL_STEP_UA;
+		pval.intval = 3000000 - ICL_STEP_UA;
 		power_supply_set_property(chip->main_psy,
 				POWER_SUPPLY_PROP_CURRENT_MAX,
 				&pval);
