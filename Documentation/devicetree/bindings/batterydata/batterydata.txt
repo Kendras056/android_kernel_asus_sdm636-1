@@ -7,7 +7,7 @@ qcom,battery-data node required properties:
 - qcom,rpull-up-kohm : The vadc pullup resistor's resistance value in kOhms.
 - qcom,vref-batt-therm-uv : The vadc voltage used to make readings.
 			For Qualcomm Technologies, Inc. VADCs, this should be
-			1800000uV.
+			2000000uV.
 
 qcom,battery-data node optional properties:
 - qcom,batt-id-range-pct : The area of variation between upper and lower bound
@@ -144,7 +144,7 @@ In msm8974-mtp.dtsi:
 
 mtp_batterydata: qcom,battery-data {
 	qcom,rpull-up-kohm = <100>;
-	qcom,vref-batt-therm-uv = <1800000>;
+	qcom,vref-batt-therm-uv = <2000000>;
 
 	/include/ "batterydata-palladium.dtsi"
 	/include/ "batterydata-mtp-3000mah.dtsi"
@@ -165,9 +165,6 @@ qcom,palladium-batterydata {
 	qcom,v-cutoff-uv = <3400000>;
 	qcom,chg-term-ua = <100000>;
 	qcom,batt-id-kohm = <75>;
-	qcom,step-chg-ranges = <3600000 4000000 3000000
-				4001000 4200000 2800000
-				4201000 4400000 2000000>;
 	qcom,jeita-fcc-ranges = <0      100     600000
 				 101    200     2000000
 				 201    450     3000000
@@ -175,6 +172,9 @@ qcom,palladium-batterydata {
 	qcom,jeita-fv-ranges = <0      100     4200000
 				101    450     4350000
 				451    550     4200000>;
+	qcom,step-chg-ranges = <3600000 4000000 3000000
+				4001000 4200000 2800000
+				4201000 4400000 2000000>;
 	qcom,battery-type = "palladium_1500mah";
 
 	qcom,fcc-temp-lut {
